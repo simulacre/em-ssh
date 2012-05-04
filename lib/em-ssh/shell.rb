@@ -263,7 +263,6 @@ module EventMachine
           connection.errback do |e|
             e.set_backtrace(trace + Array(e.backtrace))
             fire(:error, e)
-            f.resume(e)
           end # err
         end
         return Fiber.yield
