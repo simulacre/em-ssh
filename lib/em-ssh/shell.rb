@@ -70,7 +70,7 @@ module EventMachine
         @options         = opts
         @port            = opts[:port] || 22
         @auth_methods    = opts[:auth_methods] || ['publickey', 'password']
-        @verbose         = opts[:verbose] || :debug
+        @verbose         = opts[:verbose] || :warn
         @connect_opts    = {:password => pass, :port => @port, :auth_methods => @auth_methods, :verbose => @verbose}.merge(opts[:net_ssh] || {})
         @connection      = opts[:connection]
         @parent          = opts[:parent]
