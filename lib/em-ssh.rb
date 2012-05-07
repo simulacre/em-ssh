@@ -57,6 +57,7 @@ module EventMachine
           when :fatal then Logger::FATAL
 	  else Logger::WARN
 	end
+        @logger = ::Logger.new(STDERR).tap{ |l| l.level = level }
         logger(level).debug("#{self}.connect(#{host}, #{user}, #{opts})")
         options = { :host => host, :user => user, :port => DEFAULT_PORT, :logger => logger}.merge(opts)
         EM.connect(options[:host], options[:port], Connection, options, &blk)
