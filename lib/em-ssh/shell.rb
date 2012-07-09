@@ -68,7 +68,10 @@ module EventMachine
         @user            = user
         @pass            = pass
         @options         = opts
-        @connect_opts    = {:password => pass, :port => 22, :auth_methods => ['publickey', 'password']}.merge(opts[:net_ssh] || {})
+        @port            = opts[:port] || 22
+        @auth_methods    = opts[:auth_methods] || ['publickey', 'password']
+        @verbose         = opts[:verbose] || :warn
+        @connect_opts    = {:password => pass, :port => @port, :auth_methods => @auth_methods, :verbose => @verbose}.merge(opts[:net_ssh] || {})
         @connection      = opts[:connection]
         @parent          = opts[:parent]
         @children        = []
@@ -264,7 +267,6 @@ module EventMachine
           connection.errback do |e|
             e.set_backtrace(trace + Array(e.backtrace))
             fire(:error, e)
-            f.resume(e)
           end # err
         end
         return Fiber.yield
