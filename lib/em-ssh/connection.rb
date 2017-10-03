@@ -16,7 +16,7 @@ module EventMachine
       # @return [String] The host to connect to, as given to the constructor.
       attr_reader :host
 
-      # @return [Fixnum] the port number (DEFAULT_PORT) to connect to, as given in the options to the constructor.
+      # @return [Integer] the port number (DEFAULT_PORT) to connect to, as given in the options to the constructor.
       attr_reader :port
 
       # @return [ServerVersion] The ServerVersion instance that encapsulates the negotiated protocol version.

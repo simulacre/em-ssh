@@ -69,10 +69,10 @@ module EventMachine
       # @param [String, nil] pass by default publickey and password auth will be attempted
       # @param [Hash] opts
       # @option opts [Hash] :net_ssh options to pass to Net::SSH; see Net::SSH.start
-      # @option opts [Fixnum] :timeout (TIMEOUT) default timeout for all #wait_for and #send_wait calls
+      # @option opts [Integer] :timeout (TIMEOUT) default timeout for all #wait_for and #send_wait calls
       # @option opts [Boolean] :reconnect when disconnected reconnect
       def initialize(address, user, pass, opts = {}, &blk)
-        @timeout         = opts[:timeout].is_a?(Fixnum) ? opts[:timeout] : TIMEOUT
+        @timeout         = opts[:timeout].is_a?(Integer) ? opts[:timeout] : TIMEOUT
         @host            = address
         @user            = user
         @pass            = pass
@@ -296,7 +296,7 @@ module EventMachine
       # @param [String, Regexp] strregex to match against
       # @param [String] send_str the data to send before waiting
       # @param [Hash] opts
-      # @option opts [Fixnum] :timeout (@timeout) number of seconds to wait when there is no activity
+      # @option opts [Integer] :timeout (@timeout) number of seconds to wait when there is no activity
       # @return [Shell, String] all data received up to an including strregex if a block is not provided.
       #                         the Shell if a block is provided
       # @example expect a prompt
@@ -337,7 +337,7 @@ module EventMachine
       # Wait for the shell to send data containing the given string.
       # @param [String, Regexp] strregex a string or regex to match the console output against.
       # @param [Hash] opts
-      # @option opts [Fixnum] :timeout (Session::TIMEOUT) the maximum number of seconds to wait
+      # @option opts [Integer] :timeout (Session::TIMEOUT) the maximum number of seconds to wait
       # @return [String] the contents of the buffer or a TimeoutError
       # @raise Disconnected
       # @raise ClosedChannel
