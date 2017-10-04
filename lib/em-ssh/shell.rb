@@ -128,7 +128,7 @@ module EventMachine
 
       # @return [Boolean] true if the session is still alive
       def connected?
-        session && !session.closed?
+        session.present? && !session.closed?
       end
 
 
