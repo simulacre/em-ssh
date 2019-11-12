@@ -56,7 +56,7 @@ module EM
         REMOTE2.add_field(:username, 'docker')
         REMOTE2.add_field(:prompt, '$')
         REMOTE2.add_field(:timeout, 5, &:to_i)
-        REMOTE2.add_field(:uname_a, "4.4.22-moby #1 SMP Sun Sep 25 22:54:41 UTC 2016 x86_64 GNU/Linux")
+        REMOTE2.add_field(:uname_a, "moby")
       end
     end
   end

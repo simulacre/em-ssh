@@ -6,10 +6,10 @@ module EM::Ssh::Test
 
   describe "EM::Ssh" do
     it "should be addressable through EM::P and EM::Protocols" do
-      EM::P.const_defined?(:Ssh).should be true
-      EM::Protocols.const_defined?(:Ssh).should be true
-      EM::P::Ssh.should == EM::Ssh
-      EM::Protocols::Ssh.should == EM::Ssh
+      expect(EM::P.const_defined?(:Ssh)).to be true
+      expect(EM::Protocols.const_defined?(:Ssh)).to be true
+      expect(EM::P::Ssh).to be EM::Ssh
+      expect(EM::Protocols::Ssh).to be EM::Ssh
     end
 
     it "should raise a ConnectionTimeout error when a connection can't be established before the given timeout" do
@@ -48,7 +48,7 @@ module EM::Ssh::Test
           end
         end
       }
-      res.should include REMOTE2_UNAME_A
+      expect(res).to include REMOTE2_UNAME_A
     end
   end
 end

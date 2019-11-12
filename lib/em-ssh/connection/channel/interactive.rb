@@ -67,7 +67,7 @@ module EventMachine
           # @param [String, Regexp] strregex to match against
           # @param [String] send_str the data to send before waiting
           # @param [Hash] opts
-          # @option opts [Fixnum] :timeout (@timeout) number of seconds to wait when there is no activity
+          # @option opts [Integer] :timeout (@timeout) number of seconds to wait when there is no activity
           # @return [Shell, String] all data received up to an including strregex if a block is not provided.
           #                         the Shell if a block is provided
           # @example expect a prompt
@@ -114,7 +114,7 @@ module EventMachine
           # Wait for the shell to send data containing the given string.
           # @param [String, Regexp] strregex a string or regex to match the console output against.
           # @param [Hash] opts
-          # @option opts [Fixnum] :timeout (Session::TIMEOUT) the maximum number of seconds to wait
+          # @option opts [Integer] :timeout (Session::TIMEOUT) the maximum number of seconds to wait
           # @return [String] the contents of the buffer or a TimeoutError
           # @raise Disconnected
           # @raise ClosedChannel
@@ -122,7 +122,7 @@ module EventMachine
           def wait_for(strregex, opts = { })
             ###
             log = opts[:log] || NullLogger.new
-            timeout_value = opts[:timeout].is_a?(Fixnum) ? opts[:timeout] : DEFAULT_TIMEOUT
+            timeout_value = opts[:timeout].is_a?(Integer) ? opts[:timeout] : DEFAULT_TIMEOUT
             ###
             log.debug("wait_for(#{strregex.inspect}, :timeout => #{timeout_value})")
             opts          = { :timeout => timeout_value }.merge(opts)

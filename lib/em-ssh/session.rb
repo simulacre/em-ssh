@@ -58,7 +58,7 @@ module EventMachine
         # remove the reference to the transport to facilitate Garbage Collection
         transport, @transport = @transport, nil
         @listeners.clear
-        transport.close
+        transport.close unless transport.nil?
       end
 
     private
